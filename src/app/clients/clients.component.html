@@ -1,0 +1,20 @@
+﻿<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>اسم الشركة</th>
+            <th>التليفون</th>
+            <th>العنوان</th>
+            <th>نوع النشاط</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients" (click)="onSelect(client)">
+            <td>{{client.name}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.address}}</td>
+            <td>{{client.type}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<app-client-details [client]="selectedClient"></app-client-details>

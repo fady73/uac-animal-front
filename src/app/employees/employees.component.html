@@ -1,0 +1,18 @@
+﻿<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>الموظفين </th>
+            <th>تليفون</th>
+            <th>منطقه</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees" (click)="onSelect(employee)">
+            <td>{{employee.name}}</td>
+            <td>{{employee.phone}}</td>
+            <td>{{employee.area}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<app-employee-details [employee]="selectedEmployee"></app-employee-details>
