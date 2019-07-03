@@ -6,5 +6,8 @@ export class Client {
     phone: string;
     type: string;
     address: string;
+    image: string;
+    rate: string;
+    visit: boolean;
     comments: Comment[];
 }

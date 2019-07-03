@@ -1,0 +1,17 @@
+.active {
+    background-color: #fff;
+    border-radius: 6px;
+    color: #000;
+}
+.navbar {
+    background-color: #0e2947 !important;
+    li a {
+        color: #36c6d3;
+        margin-left: 10px;
+    }
+
+    li a.active {
+       background-color: #36c6d3;
+       color: #fff;
+    }
+}

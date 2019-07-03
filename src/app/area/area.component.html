@@ -1,0 +1,27 @@
+﻿<section class="areas padding">
+    <div class="container">
+         <table class="table text-right">
+        <thead class="">
+            <tr>
+                <th>ID</th>
+                <th>المنطقة</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let area of areas">
+                <td>{{area.id}}</td>
+                <td>{{area.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <form class="text-right padding form-inline" 
+          [formGroup]="areaForm" (ngSubmit)="onSubmit()">
+            <label class="label">اضافة منطقه جديده:  </label>
+            <input type="text" formControlName="name" class="form-control" placeholder="اسم المنطقه" />
+            <label class="label"> ID: </label>
+            <input type="text" formControlName="id" class="form-control" placeholder="ال ID" />
+            <input type="submit" class="btn btn-primary" name="submit" value="حفظ" />
+        </form>
+     </div>
+</section>

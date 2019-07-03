@@ -10,10 +10,12 @@ import { Employee } from '../shared/employee';
 export class EmployeesComponent implements OnInit {
     employees: Employee[];
     selectedEmployee: Employee;
+    filterText:string='';
+
     constructor(private employeeService: EmployeeService) { }
     
     ngOnInit() {
-        this.employees = this.employeeService.getEmployees();
+        this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
     onSelect(employee: Employee) {

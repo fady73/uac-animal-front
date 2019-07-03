@@ -1,20 +1,32 @@
-﻿<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>اسم الشركة</th>
-            <th>التليفون</th>
-            <th>العنوان</th>
-            <th>نوع النشاط</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let client of clients" (click)="onSelect(client)">
-            <td>{{client.name}}</td>
-            <td>{{client.phone}}</td>
-            <td>{{client.address}}</td>
-            <td>{{client.type}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<app-client-details [client]="selectedClient"></app-client-details>
+﻿<section class="padding clients">
+    <div class="container">
+        <div class="row">
+            <p class="text-right col-3">بحث (بالاسم او رقم التليفون): </p>
+            <input type="text" class="form-control col-3" style="width: 300px;"
+                   [(ngModel)]="filteredText" />
+        </div>
+        <table class="table">
+        <thead class="">
+            <tr>
+                <th>اسم الشركة</th>
+                <th>التليفون</th>
+                <th>العنوان</th>
+                <th>نوع النشاط</th>
+                <th>التقييم العام</th>
+                <th>الزيارة</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients | clientFilter:filteredText" (click)="onSelect(client)"
+                 [routerLink]="['/clientdetails', client.id]">
+                <td>{{client.name}}</td>
+                <td>{{client.phone}}</td>
+                <td>{{client.address}}</td>
+                <td>{{client.type}}</td>
+                <td>{{client.rate}}</td>
+                <td>{{client.visit}}</td>
+            </tr>
+        </tbody>
+        </table>
+      </div>
+</section>

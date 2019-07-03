@@ -1,3 +1,46 @@
-<p *ngIf="client">
-  {{client.name}}
-</p>
+﻿  <section class="clientDetails padding">
+      <div class="container">
+        <div class="row" *ngIf="client">
+            <div class="col-sm-8">
+                <p><strong>الاسم: </strong> {{client.name}}</p>
+                <p><strong>التليفون: </strong> {{client.phone}}</p>
+                <p><strong>نوع النشاط: </strong> {{client.type}}</p>
+                <p><strong>المنطقة: </strong> {{client.address}}</p>
+
+                <h2 class="text-center">الزيارات</h2>
+
+                <div class="row search-form">
+                    <p class="text-right col-3">البحث باسم الشركة: </p>
+                    <input type="text" class="form-control col-4" style="width: 300px;"
+                           [(ngModel)]="filterText" />
+                </div>
+
+                <table class="table">
+                    <thead class="">
+                        <tr>
+                            <th>اسم المندوب</th>
+                            <th>التاريخ</th>
+                            <th>الوقت</th>
+                            <th>التعليق</th>
+                            <th>التقييم</th>
+                            <th>الموقع </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="comments" *ngFor="let comment of client.comments | clientDetails:filterText">
+                            <td>{{comment.employee}}</td>
+                            <td>{{comment.date}}</td>
+                            <td>{{comment.time}}</td>
+                            <td>{{comment.comment}}</td>
+                            <td>{{comment.rate}}</td>
+                            <td><a href={{comment.location}} target="_blank">الموقع على الخريطه</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4 text-center">
+                <img class="mr-auto" src={{client.image}} />
+            </div>
+        </div>
+    </div>
+</section>

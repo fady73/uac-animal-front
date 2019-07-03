@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Params, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Employee } from '../shared/employee';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -7,11 +10,16 @@ import { Employee } from '../shared/employee';
   styleUrls: ['./employee-details.component.scss']
 })
 export class EmployeeDetailsComponent implements OnInit {
-    @Input() employee: Employee;
+     employee: Employee;
+    filterText: string = '';
+    constructor(private employeeService: EmployeeService,
+                private route: ActivatedRoute,
+                private location: Location) { }
 
-  constructor() { }
+    ngOnInit() {
+        const id = this.route.snapshot.params['id'];
 
-  ngOnInit() {
-  }
+        this.employeeService.getEmployee(id).subscribe(employee => this.employee = employee);
+    }
 
 }

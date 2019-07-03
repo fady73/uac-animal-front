@@ -1,18 +1,26 @@
-﻿<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>الموظفين </th>
-            <th>تليفون</th>
-            <th>منطقه</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees" (click)="onSelect(employee)">
-            <td>{{employee.name}}</td>
-            <td>{{employee.phone}}</td>
-            <td>{{employee.area}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<app-employee-details [employee]="selectedEmployee"></app-employee-details>
+﻿<section class="padding employees">
+    <div class="container">
+         <div class="row">
+            <p class="text-right col-3">بحث (بالاسم او رقم التليفون): </p>
+            <input type="text" class="form-control col-3"  style="width: 300px;"
+                    [(ngModel)]="filterText" />
+        </div>
+         <table class="table">
+        <thead class="">
+            <tr>
+                <th>الموظفين </th>
+                <th>تليفون</th>
+                <th>منطقه</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees | filter:filterText" (click)="onSelect(employee)"
+                [routerLink]="['/employeedetails', employee.id]">
+                <td>{{employee.name}}</td>
+                <td>{{employee.phone}}</td>
+                <td>{{employee.area}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</section>

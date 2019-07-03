@@ -7,7 +7,7 @@ export const EMPLOYEES: Employee[] = [
         name: "ahmed ali",
         phone: "01004022469",
         area: "abo tiga",
-        image: "../images/employee.jpg",
+        image: "assets/images/employee.jpg",
         moderator: "mod1",
         comments: [
             {
@@ -15,7 +15,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "first",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             },
@@ -24,7 +24,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "first",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             },
@@ -33,7 +33,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "first",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             }
@@ -44,9 +44,9 @@ export const EMPLOYEES: Employee[] = [
     {
         id: "1",
         name: "ali ali",
-        phone: "01004022469",
+        phone: "102525522552",
         area: "assiut city",
-        image: "../images/employee.jpg",
+        image: "assets/images/employee.jpg",
         moderator: "mod2",
         comments: [
             {
@@ -54,7 +54,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "first",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             },
@@ -63,7 +63,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "second",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             },
@@ -72,7 +72,7 @@ export const EMPLOYEES: Employee[] = [
                 company: "third",
                 date: "2/2/2019",
                 time: "8:33",
-                location: "assiut",
+                location: "https://maps.google.com/maps?q=27.189136, 31.168530",
                 comment: "this is good company",
                 rate: "4"
             }

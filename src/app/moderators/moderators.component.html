@@ -1,0 +1,20 @@
+﻿<section class="padding moderators">
+    <div class="container">
+         <table class="table text-right">
+        <thead class="">
+            <tr>
+                <th>الموظفين </th>
+                <th>تليفون</th>
+                <th>منطقه</th>
+            </tr>     
+        </thead>
+        <tbody>
+            <tr *ngFor="let mod of moderators">
+                <td>{{mod.name}}</td>
+                <td>{{mod.phone}}</td>
+                <td>{{mod.area}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</section>
