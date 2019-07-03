@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 import { Client } from '../shared/client';
 import { ClientService } from '../services/client.service';
@@ -18,8 +19,9 @@ export class ClientDetailsComponent implements OnInit {
         private location: Location) { }
 
     ngOnInit() {
-        const id = this.route.snapshot.params['id'];
-        this.clientService.getClient(id).subscribe(client => this.client = client);
+        this.route.params
+            .pipe(switchMap((params: Params) => this.clientService.getClient(params['id'])))
+            .subscribe(employee => this.client = employee);
     }
 
     goBack() {

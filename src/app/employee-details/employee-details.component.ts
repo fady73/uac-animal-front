@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
+
 import { Employee } from '../shared/employee';
 import { EmployeeService } from '../services/employee.service';
 
@@ -17,9 +19,10 @@ export class EmployeeDetailsComponent implements OnInit {
                 private location: Location) { }
 
     ngOnInit() {
-        const id = this.route.snapshot.params['id'];
+        this.route.params
+            .pipe(switchMap((params: Params) => this.employeeService.getEmployee(params['id'])))
+            .subscribe(employee => this.employee = employee);
 
-        this.employeeService.getEmployee(id).subscribe(employee => this.employee = employee);
     }
 
 }
