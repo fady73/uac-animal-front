@@ -14,4 +14,9 @@
        background-color: #36c6d3;
        color: #fff;
     }
+    .navbar-brand {
+        img {
+            max-width: 150px !important;
+        }
+    }
 }

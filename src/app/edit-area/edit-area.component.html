@@ -1,0 +1,20 @@
+<section class="padding">
+    <div class="container" *ngIf="area">
+        <form class="" novalidate [formGroup]="areaForm"
+         (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="col-md-2 text-right">الاسم:</label>
+                <div class="col-md-10">
+                    <input type="text" formControlName="name" 
+                    class="form-control" required>
+                     <p *ngIf="areaForm.get('name').hasError('required')
+                      && areaForm.get('name').touched">area name is required</p>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" class="text-center btn btn-primary" 
+                name="submit" value="حفظ" />
+            </div>
+        </form>
+  </div>
+  </section>

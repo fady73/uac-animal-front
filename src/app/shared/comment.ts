@@ -3,7 +3,8 @@
     company: string;
     date: string;
     time: string;
-    location: string;
+    lon: string;
+    lat: string;
     comment: string;
     rate: string;
 }

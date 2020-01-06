@@ -3,45 +3,66 @@
 
         <div class="row " *ngIf="employee">
             <div class="col-sm-8">
-                <p><strong>الاسم: </strong> {{employee.name}}</p>
-                <p><strong>التليفون: </strong> {{employee.phone}}</p>
-                <p><strong>المنطقة: </strong> {{employee.area}}</p>
-                <p><strong>مدير المنطقة: </strong> {{employee.moderator}}</p>
+                <p><strong>الاسم: </strong> {{employee[0].name}}</p>
+                <p><strong>التليفون: </strong> {{employee[0].phone}}</p>
+                <p><strong>المنطقة: </strong> {{employee[0].area}}</p>
 
-                <h2 class="text-center">الزيارات</h2>
-                <div class="row search-form">
-                    <p class="text-right col-3">البحث باسم الشركة: </p>
-                    <input type="text" class="form-control col-4" style="width: 300px;"
-                           [(ngModel)]="filterText" />
-                </div>
-
-                <table class="table">
-                    <thead class="">
-                        <tr>
-                            <th>اسم الشركه</th>
-                            <th>التاريخ</th>
-                            <th>الوقت</th>
-                            <th>التعليق</th>
-                            <th>التقييم</th>
-                            <th>الموقع</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="comments" *ngFor="let comment of employee.comments | employeeDetails:filterText">
-                            <td>{{comment.company}}</td>
-                            <td>{{comment.date}}</td>
-                            <td>{{comment.time}}</td>
-                            <td>{{comment.comment}}</td>
-                            <td>{{comment.rate}}</td>
-                            <td><a href={{comment.location}} target="_blank">الموقع على الخريطه</a>
-                                   </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <br />
+                <input type="date" class="form-control col-md-8"
+                [(ngModel)]="trackDate" name="trackDate">
+                <button class="btn btn-primary" (click)="tracking()">
+                    بحث</button> <br />
+                    <a *ngIf="trackingLink" [href]="trackingLink" target="_blank">تحركات المندوب</a>
             </div>
             <div class="col-sm-4 text-center">
-                <img class="mr-auto" src={{employee.image}} />
+                <img class="EmpImage mr-auto" src={{employee[0].image}} />
+            </div>
+            <div class="col-sm-12" *ngIf="employee[1].Comments">
+                    <h2 class="text-center">الزيارات</h2>
+                    <div class="row search-form">
+                            <p class="text-right col-sm-2 col-6">البحث باسم الشركة: </p>
+                            <input type="text" class="form-control col-sm-4 col-6"
+                            style="width: 300px;" [(ngModel)]="filterText" />
+
+                            <label for="date" class="col-sm-2 col-6">بحث بالتاريخ:</label>
+                            <input type="date" class="form-control col-sm-4 col-6" [(ngModel)]="dateFilter" />
+                        
+                    </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="">
+                            <tr>
+                                <th>اسم الشركه</th>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>التعليق</th>
+                                <th>التقييم</th>
+                                <th>الموقع</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="employee[1].Comments">
+                            <tr class="comments" *ngFor="let comment of employee[1].Comments 
+                            | employeeDetails:filterText | singleDate:dateFilter">
+                                <td>{{comment.company}}</td>
+                                <td>{{comment.date}}</td>
+                                <td>{{comment.time}}</td>
+                                <td>{{comment.comment}}</td>
+                                <td>{{comment.rate}}</td>
+                                <td>
+                                    <a href="https://www.google.com/maps?{{comment.lat}},{{comment.lat}}" target="_blank">الموقع على الخريطه</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
+        <div class="print text-center">
+                <a style="color: #fff !important;" class="print-btn btn btn-primary"
+                title="print button" onclick="window.print();" target="_blank">
+                     طباعة 
+                  </a>
+            </div>
     </div>
 </section>

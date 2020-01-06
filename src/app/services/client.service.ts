@@ -1,19 +1,40 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { Client } from '../shared/client';
-import { CLIENTS } from '../shared/clients';
+import { ClientDetails } from '../shared/clientDetails';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
+    private clientsUrl = 'http://uac-animal.com/emp_Manage/ds-getClients.php';
+    private clientUrl = 'http://uac-animal.com/emp_Manage/ds-clientDetails.php';
+    private addClientUrl = 'http://uac-animal.com/emp_Manage/ds-addClientAPI.php'
+    private deleteClientUrl = 'http://uac-animal.com/emp_Manage/ds-deleteClient.php'
+    private trashUrl = 'http://uac-animal.com/emp_Manage/ds-trashClients.php';
+
     getClients(): Observable<Client[]> {
-        return of(CLIENTS).pipe(delay(2000));
+        return this.http.get<Client[]>(this.clientsUrl);
     }
 
-    getClient(id: string): Observable<Client> {
-        return of(CLIENTS.filter((client) => (client.id === id))[0]).pipe(delay(2000));
+    getTrashClients(): Observable<Client[]> {
+        return this.http.get<Client[]>(this.trashUrl);
     }
-  constructor() { }
+
+
+    getClient(id: string): Observable<ClientDetails> {
+        return this.http.get<ClientDetails>(this.clientUrl, { params: {company_id: id} });
+    }
+
+    addClient(formData: FormData) {
+        return this.http.post<any>(this.addClientUrl, formData);
+    }
+
+    deleteClient(id: string) {
+        return this.http.post<any>(this.deleteClientUrl, id);
+    }
+
+    constructor(private http: HttpClient) { }
 }

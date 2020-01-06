@@ -1,59 +1,273 @@
-﻿<section class="addClient padding"> 
-     <div class="container">
-           <form class="">
+<section class="addClient padding">
+    
+  <div class="container">
+    <div class="selectType">
+          <label class="col-md-2 text-right" for="area">اختر نوع العميل:</label>
+        <select [(ngModel)]="selectedOption" class="form-control col-md-10" (ngModelChange)="onSelect($event)">
+            <option value="1">مزرعة</option>
+            <option value="2">مصنع</option>
+            <option value="3">معرض</option>
+            <option value="4">دكتور</option>"
+        </select>      
+    </div>
+
+        <form class="" [formGroup]="ranchForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==1">
+                <h2 class="text-center">تسجيل بيانات مزرعة</h2>
+         <div class="form-group">
+             <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
+             <div class="col-md-10">
+                 <input type="text" formControlName="name" class="form-control">
+              </div>
+         </div>
+         <div class="form-group">
+             <label class="col-md-2 text-right" for="phone">التليفون:</label>
+             <div class="col-md-10">
+                 <input type="number" formControlName="phone" class="form-control">
+             </div>
+         </div>
+         
+         <div class="form-group">
+            <label class="col-md-2 text-right" for="area">المنطقة:</label>
+            <select formControlName="areaId" class="form-control col-md-10">
+                <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+                
+            </select>
+        </div>
+         <div class="form-group">
+             <label class="col-md-2 text-right" for="manager">المدير:</label>
+             <div class="col-md-10">
+                 <input type="text" formControlName="manager" class="form-control">
+             </div>
+         </div>
+
+         <div class="form-group">
+            <label class="col-md-2 text-right" for="Number">عدد الحيوانات:</label>
+            <div class="col-md-10">
+                <input type="number" formControlName="number" class="form-control">
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="kind">نوع الحيوانات:</label>
+            <div class="col-md-10">
+                <input type="text" formControlName="kind" class="form-control">
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="age">متوسط اعمار الحيوانات: </label>
+            <div class="col-md-10">
+                <input type="text" formControlName="age" class="form-control" placeholder="من:الى">
+             </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="weight">متوسط اوزان الحيوانات: </label>
+            <div class="col-md-10">
+                <input type="text" formControlName="weight" class="form-control" placeholder="من:الى">
+             </div>
+        </div>
+
+          <div class="form-group">
+            <label class="col-md-2 text-right" for="production">انتاجية المزرعة:</label>
+            <select formControlName="production" (ngModelChange)="onSelectProduction($event)"
+             class="form-control col-md-10">
+                <option value="0">حلاب </option>
+                <option value="1">تسمين</option>
+            </select>        
+          </div>
+
+          <!-- if production milk  -->
+          <div class="form-group" *ngIf="productionType==0"> 
+              <label class="col-md-2 text-right" for="milkPhase">مرحلة الحليب: </label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="milkPhase"
+                   class="form-control" placeholder="اول الفترة – منتصف الفترة – اخر الفترة">
+              </div>
+          </div>
+          <div class="form-group" *ngIf="productionType==0"> 
+              <label class="col-md-2 text-right" for="quantity">كمية اللبن المنتج ( معدل \ حيوان ): </label>
+              <div class="col-md-10">
+                  <input type="number" formControlName="quantity" class="form-control" placeholder="لتر \يوم">
+              </div>
+          </div>
+
+          <div class="form-group" *ngIf="productionType==1">
+              <label class="col-md-2 text-right" for="fattingPhase">مرحلة التسمين: </label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="fattingPhase"
+                   class="form-control" placeholder=" اول الفترة – اخر الفترة">
+              </div>
+          </div>
+
+          <div class="form-group" *ngIf="productionType==1">
+            <label class="col-md-2 text-right" for="talaak">هل توجد طلائق ؟:</label>
+            <select formControlName="talaak" (ngModelChange)="onSelectTalaak($event)"
+             class="form-control col-md-10">
+                <option value="0">لايوجد</option>
+                <option value="1">يوجد</option>
+            </select>        
+          </div>
+
+          <div class="form-group" *ngIf="productionType==1 && talaak==1">
+              <label class="col-md-2 text-right" for="talaakNum"> عددالطلقات:</label>
+              <div class="col-md-10">
+                  <input type="number" formControlName="talaakNum" class="form-control">
+              </div>
+          </div>
+
+          <div class="form-group" *ngIf="productionType==1 && talaak==1">
+            <label class="col-md-2 text-right" for="tNumber"> الرقم: </label>
+            <div class="col-md-10">
+                <input type="number" formControlName="tNumber" class="form-control">
+            </div>
+        </div>
+
+         <div class="form-group text-center">
+             <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+         </div>
+    </form>
+
+    <!-- factory form -->
+    <form class="" [formGroup]="factoryForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==2">
+        <div class="form-group">
+            <h2 class="text-center">تسجيل بيانات مصنع</h2>
+            <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
+            <div class="col-md-10">
+                <input type="text" formControlName="name" class="form-control">
+             </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="phone">التليفون:</label>
+            <div class="col-md-10">
+                <input type="number" formControlName="phone" class="form-control">
+            </div>
+        </div>
+        
+        <div class="form-group">
+           <label class="col-md-2 text-right" for="area">المنطقة:</label>
+           <select formControlName="areaId" class="form-control col-md-10">
+               <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+               
+           </select>
+       </div>
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="manager">المدير:</label>
+            <div class="col-md-10">
+                <input type="text" formControlName="manager" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+           <label class="col-md-2 text-right" for="kind">نوع الانتاج:</label>
+           <div class="col-md-10">
+               <input type="text" formControlName="kind" class="form-control">
+            </div>
+       </div>
+
+       <div class="form-group">
+           <label class="col-md-2 text-right" for="capacity">الطاقة الانتاجية\السنة: </label>
+           <div class="col-md-10">
+               <input type="text" formControlName="capacity"
+                class="form-control" placeholder="من:الى" >
+            </div>
+       </div>
+
+       <div class="form-group">
+           <label class="col-md-2 text-right" for="mentor">المشرف على المصنع: </label>
+           <div class="col-md-10">
+               <input type="text" formControlName="mentor" class="form-control">
+            </div>
+       </div>
+    
+       <div class="form-group text-center">
+            <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+        </div>
+    </form>
+
+    <!-- showRoom form -->
+    <form class="" [formGroup]="showRoomForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==3">
             <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">اسم الشركة:</label>
+                <h2 class="text-center">تسجيل بيانات المعرض</h2>
+                <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" id="usr">
+                    <input type="text" formControlName="name" class="form-control">
                  </div>
             </div>
             <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">التليفون:</label>
+                <label class="col-md-2 text-right" for="phone">التليفون:</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" id="usr">
+                    <input type="number" formControlName="phone" class="form-control">
                 </div>
             </div>
+            
             <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">نوع النشاط:</label>
-                <div class="col-md-10">
-                    <div class="form-check-inline">
-                        <label class="form-check-label text-right">
-                            <input type="radio" class="form-check-input" name="optradio">مصنع
-                        </label>
-                    </div>
-                    <div class="form-check-inline">
-                        <label class="form-check-label text-right">
-                            <input type="radio" class="form-check-input" name="optradio">مزرعة
-                        </label>
-                    </div>
-                    <div class="form-check-inline disabled">
-                        <label class="form-check-label text-right">
-                            <input type="radio" class="form-check-input" name="optradio" >معرض 
-                        </label>
-                    </div>
-                 </div>
-            </div>
+               <label class="col-md-2 text-right" for="area">المنطقة:</label>
+               <select formControlName="areaId" class="form-control col-md-10">
+                   <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+                   
+               </select>
+           </div>
             <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">المنطقة:</label>
+                <label class="col-md-2 text-right" for="manager">المدير:</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" id="usr">
+                    <input type="text" formControlName="manager" class="form-control">
                 </div>
             </div>
+    
             <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">اضافة صوره:</label>
-                <div class="col-md-10">
-                    <input type="file" class="form-control" id="usr">
+               <label class="col-md-2 text-right" for="kind">الوصف (اى معلومة اضافية):</label>
+               <div class="col-md-10">
+                   <input type="text" formControlName="desc" class="form-control">
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 text-right" for="usr">المدير:</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="usr">
-                </div>
-            </div>
-            <div class="form-group text-center">
-                <input type="text" class="text-center btn btn-primary" name="submit" value="حفظ" />
+           </div>
+    
+           <div class="form-group text-center">
+                <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
             </div>
     </form>
-    </div>
+
+    <!-- doctor form -->
+    <form class="" [formGroup]="doctorForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==4">
+            <div class="form-group">
+                <h2 class="text-center">تسجيل بيانات الدكتور</h2>
+                <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
+                <div class="col-md-10">
+                    <input type="text" formControlName="name" class="form-control">
+                 </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 text-right" for="phone">التليفون:</label>
+                <div class="col-md-10">
+                    <input type="number" formControlName="phone" class="form-control">
+                </div>
+            </div>
+            
+            <div class="form-group">
+               <label class="col-md-2 text-right" for="area">المنطقة:</label>
+               <select formControlName="areaId" class="form-control col-md-10">
+                   <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+                   
+               </select>
+           </div>
+            <div class="form-group">
+                <label class="col-md-2 text-right" for="manager">المدير:</label>
+                <div class="col-md-10">
+                    <input type="text" formControlName="manager" class="form-control">
+                </div>
+            </div>
+    
+            <div class="form-group">
+               <label class="col-md-2 text-right" for="specialization">التخصص:</label>
+               <div class="col-md-10">
+                   <input type="text" formControlName="specialization" class="form-control">
+                </div>
+           </div>
+    
+           <div class="form-group text-center">
+                <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+            </div>
+    </form>
+
+ </div>
 </section>

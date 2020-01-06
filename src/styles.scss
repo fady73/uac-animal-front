@@ -24,3 +24,15 @@ body {
         color: #fff;
     }
 }
+
+/* error msg for form */
+.errorMsg {
+    color: #ff0000;
+    padding: 15px;
+}
+
+/* style form */
+select.form-control {
+    margin-bottom: 25px;
+    height: 42px;
+}

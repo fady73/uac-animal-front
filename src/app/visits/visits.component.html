@@ -1,0 +1,59 @@
+<section class="padding clients">
+  <div class="container">
+      <h1 class="text-center" style="padding-bottom: 20px;">جدول الزيارات</h1>
+      <div class="row inputSec">
+          <p class="text-right col-sm-3 col-6">بحث (بالاسم او رقم التليفون): </p>
+          <input type="text" class="form-control col-sm-3 col-6"
+                 [(ngModel)]="filteredText" />
+          <label for="date" class="col-sm-1 col-3">بدا :</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="start" />
+          <label for="date" class="col-sm-1 col-3">انتهاء :</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="end" />
+      </div>
+      
+        <div class="row table-responsive">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <th>اسم الشركة</th>
+                        <th>المندوب</th>
+                        <th>التاريخ</th>
+                        <th>الوقت</th>
+                        <th>التعليق</th>
+                        <th>التقييم</th>
+                        <th>صفحة بيانات الشركة</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let visit of visits | visits: filteredText | date:start:end" >
+                        <td>{{visit.companyname}}</td>
+                        <td>{{visit.employee}}</td>
+                        <td>{{visit.date}}</td>
+                        <td>{{visit.time}}</td>
+                        <td>{{visit.comment}}</td>
+                        <td>{{visit.rate}}</td>
+                        <td>
+                            <button class="btn btn-info" 
+                            [routerLink]="['/clientdetails', visit.companyId]"
+                            >صفحة الشركة</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger"  
+                            (click)="onDelete(visit.id)">DELETE</button>    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+      <div class="print text-center">
+          <a style="color: #fff !important;" class="print-btn btn btn-primary"
+          title="print button" onclick="window.print();" target="_blank">
+               طباعة 
+            </a>
+      </div>
+    </div>
+</section>

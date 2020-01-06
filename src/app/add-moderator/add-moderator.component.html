@@ -1,0 +1,53 @@
+<section class="padding addModerator">
+  <div class="container">      
+      <form class="" novalidate [formGroup]="addModeratorForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">اسم مدير:</label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="name" class="form-control" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">userName :</label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="username" class="form-control" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">الباسور :</label>
+              <div class="col-md-10">
+                  <input type="password" formControlName="password" class="form-control" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">التليفون:</label>
+              <div class="col-md-10">
+                  <input type="number" formControlName="phone" class="form-control">
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 text-right" for="usr">المنطقة:</label>
+            <select formControlName="area" class="form-control col-md-10">
+                <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+                
+            </select>
+        </div>
+          <!-- <div class="form-group">
+              <label class="col-md-2 text-right">اضافة صوره:</label>
+              <div class="col-md-10">
+                  <input type="file" (change)="onFileSelected($event)" class="form-control">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">مدير المنطقة:</label>
+              <select formControlName="moderator" class="form-control col-md-10">
+                  <option *ngFor="let moderator of moderators" value="{{moderator.id}}">{{moderator.name}}</option>
+
+              </select>
+          </div> -->
+          <div class="form-group text-center">
+              <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+          </div>
+      </form>
+</div>
+</section>

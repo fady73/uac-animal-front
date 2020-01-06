@@ -1,0 +1,21 @@
+<div class="container padding">
+  <div class="row padding">
+      <h2 class="text-center col-12">اضافة تقييم فى صفحة المندوبين </h2>
+      <div class="col-12">
+          <form novalidate [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+      
+              <div class="form-group">
+                      <label class="col-md-2 text-right" for="rate">تقييم:</label>
+                      <div class="col-md-10">
+                          <input type="number" formControlName="rate" 
+                          class="form-control" required>
+                      </div>
+                  </div>
+         
+              <div class="form-group text-center">
+                  <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

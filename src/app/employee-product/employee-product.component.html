@@ -1,0 +1,17 @@
+<div class="container padding">
+  <div class="row">
+    <div *ngIf="flag"> <p><strong>لا توجد منتجات</strong></p> </div>
+      <div *ngFor="let product of products" class="col-sm-4 padding-cl">
+          <img style="width: 100%; height: 250px !important;" src={{product.url}} >
+          <div class="content">
+                  <p><strong>الاسم:</strong> {{product.name}}</p>
+              <p><strong>السعر:</strong> {{product.price}} L.E</p>
+              <p><strong>الوصف:</strong> {{product.description}}</p>
+              <div class="controls text-center">
+                  <button class="btn btn-danger" (click)="onDelete(product.id)">
+                      Delete</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

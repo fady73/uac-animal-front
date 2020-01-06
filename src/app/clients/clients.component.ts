@@ -9,7 +9,7 @@ import { ClientService } from '../services/client.service';
 })
 export class ClientsComponent implements OnInit {
     clients: Client[];
-    filteredText: string = '';
+    filteredText = '';
     selectedClient: Client;
 
     onSelect(client: Client) {
@@ -19,7 +19,32 @@ export class ClientsComponent implements OnInit {
     constructor(private clientService: ClientService) { }
 
     ngOnInit() {
-        this.clientService.getClients().subscribe(clients => this.clients = clients);
+        this.clientService.getClients()
+        .subscribe(clients => this.clients = clients);
+  }
+
+  onDelete(id: string) {
+    if (confirm('هل تريد الحذف نهائى؟ ')) {
+      this.clients = this.clients.filter(
+        employee => employee.id !== id
+      );
+      this.clientService.deleteClient(id).subscribe(
+          (response: any) => {
+            console.log(response);
+        },
+        (error: any) => console.log(error)
+      );
+     }
+  }
+
+  onTrash() {
+    this.clientService.getTrashClients()
+        .subscribe(clients => this.clients = clients);
+  }
+
+  allClients() {
+    this.clientService.getClients()
+        .subscribe(clients => this.clients = clients);
   }
 
 }

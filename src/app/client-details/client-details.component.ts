@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
-import { Client } from '../shared/client';
 import { ClientService } from '../services/client.service';
+import { ClientDetails } from '../shared/clientDetails';
 
 @Component({
     selector: 'app-client-details',
@@ -11,8 +11,10 @@ import { ClientService } from '../services/client.service';
     styleUrls: ['./client-details.component.scss']
 })
 export class ClientDetailsComponent implements OnInit {
-    client: Client;
-    filterText: string = '';
+    client: ClientDetails;
+    filterText = '';
+    dateFilter = '';
+    comments = [];
 
     constructor(private clientService: ClientService,
         private route: ActivatedRoute,
@@ -20,8 +22,12 @@ export class ClientDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.route.params
-            .pipe(switchMap((params: Params) => this.clientService.getClient(params['id'])))
-            .subscribe(employee => this.client = employee);
+            .pipe(switchMap(
+                (params: Params) => this.clientService.getClient(params['id'])))
+            .subscribe(client => {
+                this.client = client;
+                this.comments = this.client[1].Comments;
+             });
     }
 
     goBack() {

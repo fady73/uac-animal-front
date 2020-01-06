@@ -1,0 +1,34 @@
+<section class="padding employees">
+  <div class="container">
+  
+      <div class="table-responsive">
+          <table class="table">
+              <thead class="">
+                  <tr>
+                      <th>Target </th>
+                      <th>اسم الموظف</th>
+                      <th>اسم المنتج</th>
+                      <th>التاريخ</th>
+                  
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of target "
+                      >
+                      <td>{{item.target}}</td>
+                      <td>{{item.employee_id}}</td>
+                      <td>{{item.product_id}}</td>
+                      <td>{{item.date}}</td>
+                     
+                  </tr> 
+              </tbody>
+          </table>
+      </div>
+      <!-- <div class="print text-center">
+              <a style="color: #fff !important;" class="print-btn btn btn-primary"
+              title="print button" onclick="window.print();" target="_blank">
+                   طباعة 
+                </a>
+          </div> -->
+  </div>
+</section>

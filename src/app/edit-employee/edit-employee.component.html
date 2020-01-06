@@ -1,0 +1,58 @@
+<section class="padding addEmployee">
+  <div class="container" *ngIf="employee">      
+      <form class="" novalidate [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">اسم المندوب:</label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="name" class="form-control" required>
+                   <p *ngIf="employeeForm.get('name').hasError('required') && employeeForm.get('name').touched">Last name is required</p>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">userName :</label>
+              <div class="col-md-10">
+                  <input type="text" formControlName="username" class="form-control" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">الباسور :</label>
+              <div class="col-md-10">
+                  <input type="password" formControlName="password" class="form-control" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">التليفون:</label>
+              <div class="col-md-10">
+                  <input type="number" formControlName="phone" class="form-control">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">المنطقة:</label>
+              <select formControlName="area" class="form-control col-md-10">
+                  <option *ngFor="let area of areas" value="{{area.id}}">{{area.name}}</option>
+                  
+              </select>
+          </div>
+         
+          <div class="form-group">
+              <label class="col-md-2 text-right" for="usr">مدير المنطقة:</label>
+              <select formControlName="moderator" class="form-control col-md-10">
+                  <option *ngFor="let moderator of moderators" value="{{moderator.id}}">{{moderator.name}}</option>
+
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-2 text-right" for="trash">هل تريد حذف المندوب:</label>
+            <select formControlName="trash" class="form-control col-md-10">
+                <option  value="0">لا</option>
+                <option value="1">نعم</option>
+            </select>
+          </div>
+
+          <div class="form-group text-center">
+              <input type="submit" class="text-center btn btn-primary" name="submit" value="حفظ" />
+          </div>
+      </form>
+</div>
+</section>

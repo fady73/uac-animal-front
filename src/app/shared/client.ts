@@ -4,10 +4,10 @@ export class Client {
     id: string;
     name: string;
     phone: string;
-    type: string;
-    address: string;
     image: string;
-    rate: string;
+    type: string;
+    lon: string;
+    lat: string;
     visit: boolean;
-    comments: Comment[];
+    rate: number;
 }

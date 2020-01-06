@@ -1,46 +1,104 @@
 ﻿  <section class="clientDetails padding">
       <div class="container">
-        <div class="row" *ngIf="client">
-            <div class="col-sm-8">
-                <p><strong>الاسم: </strong> {{client.name}}</p>
-                <p><strong>التليفون: </strong> {{client.phone}}</p>
-                <p><strong>نوع النشاط: </strong> {{client.type}}</p>
-                <p><strong>المنطقة: </strong> {{client.address}}</p>
 
+        <div class="row" *ngIf="client">
+            <div class="col-sm-6">
+                <p><strong>الاسم: </strong> {{client[0].name}}</p>
+                <p><strong>التليفون: </strong> {{client[0].phone}}</p>
+                <p><strong>المنطقة: </strong>{{client[0].area}}</p>
+                <p><strong>مدير الشركة: </strong>{{client[0].manager}}</p>
+
+            </div>
+            <div class="col-sm-6">
+                    <p><strong>النوع: </strong>{{client[0].type}}</p>
+                <!-- if company is ranch -->
+                    <div *ngIf="client.ranch">
+                        <p><strong>عدد الحيوانات:</strong> {{client[0].ranch.number}}</p>
+                        <p><strong>نوع الحيوانات:</strong> {{client[0].ranch.kind}}</p>
+                        <p><strong> متوسط الاعمار:</strong> {{client[0].ranch.age}}</p>
+                        <p><strong> متوسط اوزان الحيوانات:</strong> {{client.ranch.weight}}</p>
+                        <div *ngIf="client.ranch.production == 0">
+                            <p><strong> الانتاجية:</strong> حلاب</p>
+                            <p><strong> مرحلة الحليب:</strong> {{client[0].milkranch.milkPhase}}</p>
+                            <p><strong> كمية اللبن المنتج ( معدل \ حيوان ):</strong> {{client[0].milkranch.quantity}} لتر</p>
+                        </div>
+                        <div *ngIf="client.ranch.production == 1">
+                            <p><strong> الانتاجية:</strong> تسمين</p>
+                            <p><strong> مرحلة التسمين:</strong> {{client[0].fatranch.fattingPhase}}</p>
+                            <p><strong>هل يوجد طلائق:</strong> {{(client[0].fatranch.talaak == 1)?'نعم' :'لا'}}</p>
+                            <p *ngIf="client.fatranch.talaak == 1">
+                                <strong>عدد الطلائق: </strong>  {{ client[0].fatranch.talaakNum }}
+                            </p>
+                            <p *ngIf="client.fatranch.talaak == 1">
+                                    <strong>الرقم: </strong>  {{ client[0].fatranch.number }}
+                            </p>
+                        </div>
+    
+                    </div>
+    
+                    <!-- if company is factory -->
+                    <div *ngIf="client.factory">
+                        <p><strong>نوع الانتاج: </strong> {{client.factory.productionKind}}</p>
+                        <p><strong>الطاقه الانتاجية: </strong>{{client.factory.capacity}}</p>
+                        <p><strong>المشرف على المزرعة: </strong>{{client.factory.menitor}}</p>
+                    </div>
+    
+                    <!-- if company is showroom -->
+                    <div *ngIf="client.showRoom">
+                        <p><strong>وصف: </strong>{{client.showRoom.desc}}</p>
+                    </div>
+
+                    <!-- if company is doctor -->
+                    <div *ngIf="client.doctor">
+                        <p><strong>التخصص: </strong> {{client.doctor.specialization}} </p>
+                    </div>
+            </div>
+            <div class="col-sm-12">
                 <h2 class="text-center">الزيارات</h2>
 
                 <div class="row search-form">
-                    <p class="text-right col-3">البحث باسم الشركة: </p>
-                    <input type="text" class="form-control col-4" style="width: 300px;"
-                           [(ngModel)]="filterText" />
-                </div>
 
-                <table class="table">
-                    <thead class="">
-                        <tr>
-                            <th>اسم المندوب</th>
-                            <th>التاريخ</th>
-                            <th>الوقت</th>
-                            <th>التعليق</th>
-                            <th>التقييم</th>
-                            <th>الموقع </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="comments" *ngFor="let comment of client.comments | clientDetails:filterText">
-                            <td>{{comment.employee}}</td>
-                            <td>{{comment.date}}</td>
-                            <td>{{comment.time}}</td>
-                            <td>{{comment.comment}}</td>
-                            <td>{{comment.rate}}</td>
-                            <td><a href={{comment.location}} target="_blank">الموقع على الخريطه</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <p class="text-right col-sm-2 col-6">البحث باسم الشركة: </p>
+                    <input type="text" class="form-control col-sm-4 col-6"
+                    style="width: 300px;" [(ngModel)]="filterText" />
+                    
+                    <label for="date" class="col-sm-2 col-6">بحث بالتاريخ:</label>
+                    <input type="date" class="form-control col-sm-4 col-6" [(ngModel)]="dateFilter" />
+                </div>
+                  
             </div>
-            <div class="col-sm-4 text-center">
-                <img class="mr-auto" src={{client.image}} />
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="">
+                            <tr>
+                                <th>اسم المندوب</th>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>التعليق</th>
+                                <th>التقييم</th>
+                                <th>الموقع </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="comments" *ngFor="let comment of comments 
+                             | clientDetails:filterText | singleDate:dateFilter">
+                                <td>{{comment.employee}}</td>
+                                <td>{{comment.date}}</td>
+                                <td>{{comment.time}}</td>
+                                <td>{{comment.comment}}</td>
+                                <td>{{comment.rate}}</td>
+                                <td><a href="https://maps.google.com/?q={{comment.lat}},{{comment.lon}}" target="_blank">الموقع على الخريطه</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <div class="print text-center">
+                    <a style="color: #fff !important;" class="print-btn btn btn-primary"
+                    title="print button" onclick="window.print();" target="_blank">
+                         طباعة 
+                      </a>
+                </div>
         </div>
-    </div>
 </section>

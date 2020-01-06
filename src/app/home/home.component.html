@@ -1,24 +1,30 @@
-﻿<section class="home">
+﻿<a routerLink="/login"> login </a>
+<a routerLink="/logout"> logout </a>
+
+<section class="home">
     <div class="container">
         <div class="row padding">
             <div class="col-sm-4">
-                <div class="item text-center">
+                <div class="item text-center" routerLink="/clients">
                     <h3 class="title">عدد العملاء</h3>
-                    <p class="num">40 </p>
+                    <p class="num">{{this.clientsNum}} </p>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="item text-center">
+                <div class="item text-center" routerLink="/employees">
                     <h3 class="title">عدد المندوبين</h3>
-                    <p class="num">30 </p>
+                    <p class="num">{{employeesNum}} </p>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="item text-center">
-                    <h3 class="title">عدد الزيارات اخر 30 يوم </h3>
-                    <p class="num">200 </p>
+                <div class="item text-center" routerLink="/visits">
+                    <h3 class="title">عدد الزيارات </h3>
+                    <p class="num"> {{visitsNum}} </p>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <app-visits></app-visits>
         </div>
     </div>
 </section>
