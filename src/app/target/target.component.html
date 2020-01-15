@@ -16,8 +16,9 @@
                   <tr *ngFor="let item of target "
                       >
                       <td>{{item.target}}</td>
-                      <td>{{item.employee_id}}</td>
-                      <td>{{item.product_id}}</td>
+                      <td>{{item.employee_name}}</td>
+                      <td *ngIf="item.product!=null">{{item.product.name}}</td>
+                      <td *ngIf="item.product==null">لا يوجد منتج</td>
                       <td>{{item.date}}</td>
                      
                   </tr> 

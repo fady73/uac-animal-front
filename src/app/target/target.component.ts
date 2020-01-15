@@ -22,18 +22,18 @@ export class TargetComponent implements OnInit {
         this.targetService.showtarget().subscribe(
           
           target =>{
-            console.log(target)
+            console.log(target["data"])
             this.target = target["data"]
-            console.log(this.target)
-            // this.target.forEach(element => {
-            //   console.log(element.employee)
-            //    this.item.target=element.target
-            //    this.item.employee_name=element.employee.name
-            //    this.item.date=element.date
-            //    this.item.product_id=element.product_id
+           this.target.forEach(element => {
+             this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
+             {
+                     console.log(response[0].name)
+                     element.employee_name=response[0].name
+             });
 
-            //    this.result.push(this.item)
-            // });
+
+           });
+           
           }
           
           );
