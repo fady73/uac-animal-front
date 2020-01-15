@@ -11,8 +11,9 @@ import { ProductsService } from '../services/products.service';
 })
 export class TargetComponent implements OnInit {
 
-  target: Target[];
- 
+  target: Target[]=[];
+  item:Target=new Target()
+ result:any[]
     filterText = '';
 
     constructor(private targetService: TargetService , private employee:EmployeeService , private product:ProductsService) { }
@@ -23,6 +24,16 @@ export class TargetComponent implements OnInit {
           target =>{
             console.log(target)
             this.target = target["data"]
+            console.log(this.target)
+            // this.target.forEach(element => {
+            //   console.log(element.employee)
+            //    this.item.target=element.target
+            //    this.item.employee_name=element.employee.name
+            //    this.item.date=element.date
+            //    this.item.product_id=element.product_id
+
+            //    this.result.push(this.item)
+            // });
           }
           
           );

@@ -1,3 +1,61 @@
-<p>
-  road-map works!
-</p>
+<section class="padding clients">
+  <div class="container">
+      <h1 class="text-center" style="padding-bottom: 20px;"> خريطة الطريق</h1>
+      <div class="row inputSec">
+         
+          <label for="date" class="col-sm-1 col-3">بدا :</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="start" />
+          <label for="date" class="col-sm-1 col-3">انتهاء :</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="end" />
+      </div>
+      <br>
+      <div class="form-group">
+        <label class="col-md-2 text-right" for="usr"> المندوبين:</label>
+        <select  [(ngModel)]="employee" class="form-control col-md-10">
+            <option *ngFor="let moderator of employees" value="{{moderator.id}}">{{moderator.name}}</option>
+
+        </select>
+    </div>
+
+    <div class="print text-center">
+      <a style="color: #fff !important;" class="print-btn btn btn-primary"
+      title="print button" (click)="submit()" target="_blank">
+          حفظ
+        </a>
+  </div>
+        <div class="row table-responsive">
+            <table class="table">
+                <thead class="">
+                    <tr>
+                        <th>اسم الشركة</th>
+            
+                        <th>التاريخ</th>
+                        
+                        <th>الزيارة</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let visit of visits " >
+                        <td>{{visit.companies.name}}</td>
+                  
+                        <td>{{visit.date}}</td>
+                       <td>تم </td>
+                        
+                    </tr>
+
+                    <tr *ngFor="let novisit of novisit " >
+                      <td>{{novisit.companies.name}}</td>
+                
+                      <td>{{novisit.date}}</td>
+                     <td>لم يتم</td>
+                      
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

@@ -1,3 +1,39 @@
-<p>
-  addtarget works!
-</p>
+<section class="padding clients">
+  <div class="container">
+      <h1 class="text-center" style="padding-bottom: 20px;"> اضافة تارجت</h1>
+      <div class="row inputSec">
+          <p class="text-right col-sm-3 col-6">التارجت </p>
+          <input type="number" class="form-control col-sm-3 col-6"
+                 [(ngModel)]="Target" />
+          <label for="date" class="col-sm-1 col-3">التاريخ</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="date" />
+         
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label class="col-md-2 text-right" for="usr"> المندوبين:</label>
+        <select  [(ngModel)]="employee" class="form-control col-md-10">
+            <option *ngFor="let moderator of employees" value="{{moderator.id}}">{{moderator.name}}</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-2 text-right" for="usr"> المنتجات:</label>
+      <select  [(ngModel)]="product" class="form-control col-md-10">
+          <option *ngFor="let moderator of products" value="{{moderator.id}}">{{moderator.name}}</option>
+
+      </select>
+  </div>
+<br>
+<br>
+      <div class="print text-center">
+          <a style="color: #fff !important;" class="print-btn btn btn-primary"
+          title="print button" (click)="submit()" target="_blank">
+              حفظ
+            </a>
+      </div>
+    </div>
+</section>
