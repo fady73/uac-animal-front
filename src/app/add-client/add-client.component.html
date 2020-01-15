@@ -11,7 +11,7 @@
         </select>      
     </div>
 
-        <form class="" [formGroup]="ranchForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==1">
+        <form class="" [formGroup]="ranchForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption=='1'">
                 <h2 class="text-center">تسجيل بيانات مزرعة</h2>
          <div class="form-group">
              <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
@@ -129,7 +129,7 @@
     </form>
 
     <!-- factory form -->
-    <form class="" [formGroup]="factoryForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==2">
+    <form class="" [formGroup]="factoryForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption=='2'">
         <div class="form-group">
             <h2 class="text-center">تسجيل بيانات مصنع</h2>
             <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
@@ -186,7 +186,7 @@
     </form>
 
     <!-- showRoom form -->
-    <form class="" [formGroup]="showRoomForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==3">
+    <form class="" [formGroup]="showRoomForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption=='3'">
             <div class="form-group">
                 <h2 class="text-center">تسجيل بيانات المعرض</h2>
                 <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>
@@ -228,7 +228,7 @@
     </form>
 
     <!-- doctor form -->
-    <form class="" [formGroup]="doctorForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption==4">
+    <form class="" [formGroup]="doctorForm" (ngSubmit)="onSubmit()" *ngIf="selectedOption=='4'">
             <div class="form-group">
                 <h2 class="text-center">تسجيل بيانات الدكتور</h2>
                 <label class="col-md-2 text-right" for="company Name">اسم الشركة:</label>

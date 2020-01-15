@@ -621,9 +621,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Electronica\desktop\mandobi\mandobi\src\styles.scss */"./src/styles.scss");
-__webpack_require__(/*! C:\Users\Electronica\desktop\mandobi\mandobi\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__(/*! C:\Users\Electronica\desktop\mandobi\mandobi\node_modules\bootstrap-rtl\dist\css\bootstrap-rtl.min.css */"./node_modules/bootstrap-rtl/dist/css/bootstrap-rtl.min.css");
+__webpack_require__(/*! E:\freelancer\mandobi\mandobi\src\styles.scss */"./src/styles.scss");
+__webpack_require__(/*! E:\freelancer\mandobi\mandobi\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+module.exports = __webpack_require__(/*! E:\freelancer\mandobi\mandobi\node_modules\bootstrap-rtl\dist\css\bootstrap-rtl.min.css */"./node_modules/bootstrap-rtl/dist/css/bootstrap-rtl.min.css");
 
 
 /***/ })

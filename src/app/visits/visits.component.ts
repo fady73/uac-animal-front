@@ -12,6 +12,7 @@ export class VisitsComponent implements OnInit {
   today = new Date().toISOString().split('T')[0];
   start = '';
   end = '';
+  filteredText=''
   constructor(private visitService: VisitsService) { }
 
   ngOnInit() {
