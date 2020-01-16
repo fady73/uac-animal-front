@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Router } from '@angular/router';
+import { RoadModel } from '../road-model';
 
 @Component({
   selector: 'app-road-map',
@@ -12,8 +13,8 @@ export class RoadMapComponent implements OnInit {
   start:string
   end:string
   employee:number
-  visits:any[]
-  novisit:any[]
+  visits:RoadModel[]
+  novisit:RoadModel[]
   constructor(private employeeService: EmployeeService,private router: Router) { }
 
   ngOnInit() {
@@ -34,11 +35,14 @@ export class RoadMapComponent implements OnInit {
   {
  
     this.employeeService.roadmap(this.employee,this.start,this.end).subscribe(
-      data => {
-          console.log(data);
+      response => {
+          console.log(response);
          
-         this.visits=data["visited"]
-         this.novisit=data["notVisited"]
+         this.visits=response["data"]["visited"]
+         this.novisit=response["data"]["notVisited"]
+        
+        //  console.log(this.visits[0]["companies"]["name"])
+         console.log(this.novisit)
       },
       (error) => console.log(error)
   );

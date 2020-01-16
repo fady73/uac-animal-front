@@ -22,13 +22,14 @@
     <div class="print text-center">
       <a style="color: #fff !important;" class="print-btn btn btn-primary"
       title="print button" (click)="submit()" target="_blank">
-          حفظ
+          عرض
         </a>
   </div>
         <div class="row table-responsive">
             <table class="table">
                 <thead class="">
                     <tr>
+                        <th>رقم الشركة</th>
                         <th>اسم الشركة</th>
             
                         <th>التاريخ</th>
@@ -39,17 +40,20 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let visit of visits " >
-                        <td>{{visit.companies.name}}</td>
-                  
+                      <td>{{visit.company_id}}</td>
+                        <td *ngIf="visit.companies !=null">{{visit.companies.name}}</td>
+                        <td *ngIf="visit.companies ==null">لا يوجد اسم</td>
                         <td>{{visit.date}}</td>
                        <td>تم </td>
                         
                     </tr>
 
-                    <tr *ngFor="let novisit of novisit " >
-                      <td>{{novisit.companies.name}}</td>
+                    <tr *ngFor="let novisits of novisit " >
+                        <td>{{novisits.company_id}}</td>
+                        <td *ngIf="novisits.companies !=null">{{novisits.companies.name}}</td>
+                        <td *ngIf="novisits.companies ==null">لا يوجد اسم</td>
                 
-                      <td>{{novisit.date}}</td>
+                      <td>{{novisits.date}}</td>
                      <td>لم يتم</td>
                       
                   </tr>
