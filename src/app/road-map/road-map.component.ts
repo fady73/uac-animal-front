@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RoadModel } from '../road-model';
 
 @Component({
@@ -15,10 +15,22 @@ export class RoadMapComponent implements OnInit {
   employee:number
   visits:RoadModel[]
   novisit:RoadModel[]
-  constructor(private employeeService: EmployeeService,private router: Router) { }
+  id:string
+  constructor(private employeeService: EmployeeService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.allEmployees();
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.employeeService.roadmapofemployee(this.id)
+      .subscribe(employee => {
+        console.log(employee);
+        // this.employee = employee;
+        this.visits=employee["data"]["visited"]
+        this.novisit=employee["data"]["notVisited"]
+      
+      });
+    });
+    // this.allEmployees();
   }
   allEmployees() {
     this.employeeService.showemployees().subscribe(
@@ -31,21 +43,21 @@ export class RoadMapComponent implements OnInit {
       );
   }
 
-  submit()
-  {
+  // submit()
+  // {
  
-    this.employeeService.roadmap(this.employee,this.start,this.end).subscribe(
-      response => {
-          console.log(response);
+  //   this.employeeService.roadmap(this.employee,this.start,this.end).subscribe(
+  //     response => {
+  //         console.log(response);
          
-         this.visits=response["data"]["visited"]
-         this.novisit=response["data"]["notVisited"]
+  //        this.visits=response["data"]["visited"]
+  //        this.novisit=response["data"]["notVisited"]
         
-        //  console.log(this.visits[0]["companies"]["name"])
-         console.log(this.novisit)
-      },
-      (error) => console.log(error)
-  );
-  }
+  //       //  console.log(this.visits[0]["companies"]["name"])
+  //        console.log(this.novisit)
+  //     },
+  //     (error) => console.log(error)
+  // );
+  // }
 
 }

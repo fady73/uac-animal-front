@@ -63,6 +63,13 @@ export class EditEmployeeComponent implements OnInit {
 
   onSubmit() {
       const formData = new FormData();
+      console.log(this.employeeForm.get('name').value+
+      this.employeeForm.get('username').value+
+      this.employeeForm.get('area').value+
+      this.employeeForm.get('phone').value+
+      this.employeeForm.get('password').value+
+      this.employeeForm.get('moderator').value+this.employeeForm.get('trash').value
+      )
       formData.append('id', this.id);
       formData.append('name', this.employeeForm.get('name').value);
       formData.append('username', this.employeeForm.get('username').value);

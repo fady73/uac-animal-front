@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../shared/employee';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -8,11 +9,11 @@ import { Employee } from '../shared/employee';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
-    employees: Employee[];
+    employees: any[]=[];
     selectedEmployee: Employee;
     filterText = '';
 
-    constructor(private employeeService: EmployeeService) { }
+    constructor(private employeeService: EmployeeService, private route: ActivatedRoute) { }
     ngOnInit() {
         // this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
         this.employeeService.showemployees().subscribe(

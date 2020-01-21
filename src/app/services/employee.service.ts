@@ -70,6 +70,10 @@ return this.http.post('http://laravel.uac-animal.com/api/add/rate/employee',rate
 roadmap(id:number,from:string, to:string): Observable<object> {
     return this.http.get(`http://laravel.uac-animal.com/api/road/maps/${id}?dateFrom=${from}&dateTo=${to}`);
 }
+
+roadmapofemployee(id:string): Observable<object> {
+    return this.http.get(`http://laravel.uac-animal.com/api/road/maps/${id}`);
+}
 //////////////
     constructor(private http: HttpClient) { }
 }
