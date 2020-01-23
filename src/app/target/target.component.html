@@ -5,9 +5,10 @@
           <table class="table">
               <thead class="">
                   <tr>
-                      <th>Target </th>
+                    
                       <th>اسم الموظف</th>
                       <th>اسم المنتج</th>
+                      <th>Target </th>
                       <th>التاريخ</th>
                   
                   </tr>
@@ -15,10 +16,11 @@
               <tbody>
                   <tr *ngFor="let item of target "
                       >
-                      <td>{{item.target}}</td>
+                      
                       <td>{{item.employee_name}}</td>
                       <td *ngIf="item.product!=null">{{item.product.name}}</td>
                       <td *ngIf="item.product==null">لا يوجد منتج</td>
+                      <td>{{item.target}}</td>
                       <td>{{item.date}}</td>
                      
                   </tr> 

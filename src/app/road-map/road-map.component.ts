@@ -43,21 +43,21 @@ export class RoadMapComponent implements OnInit {
       );
   }
 
-  // submit()
-  // {
- 
-  //   this.employeeService.roadmap(this.employee,this.start,this.end).subscribe(
-  //     response => {
-  //         console.log(response);
+  submit()
+  {
+ console.log("kjkj")
+    this.employeeService.roadmap(this.id,this.start,this.end).subscribe(
+      response => {
+          console.log(response);
          
-  //        this.visits=response["data"]["visited"]
-  //        this.novisit=response["data"]["notVisited"]
+         this.visits=response["data"]["visited"]
+         this.novisit=response["data"]["notVisited"]
         
-  //       //  console.log(this.visits[0]["companies"]["name"])
-  //        console.log(this.novisit)
-  //     },
-  //     (error) => console.log(error)
-  // );
-  // }
+        //  console.log(this.visits[0]["companies"]["name"])
+         console.log(this.novisit)
+      },
+      (error) => console.log(error)
+  );
+  }
 
 }
