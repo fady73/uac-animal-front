@@ -27,7 +27,9 @@ export class ModeratorService {
   getmoderators():Observable<object> {
     return this.http.get('http://laravel.uac-animal.com/api/moderators');
   }
-
+  getemployee(id:string):Observable<object> {
+    return this.http.get(`http://laravel.uac-animal.com/api/dashboard/representatives/${id}`);
+  }
     ///
 
     getTrashModerators(): Observable<Moderator[]> {

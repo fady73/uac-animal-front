@@ -1,0 +1,52 @@
+<section class="padding employees">
+  <div class="container">
+     
+      <div class="table-responsive">
+          <table class="table">
+              <thead class="">
+                  <tr>
+                      <th>الموظفين </th>
+                      <th>تليفون</th>
+                      <th>منطقه</th>
+                      <th>التفاصيل</th>
+                      <th>اعدادات</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="flag">لا يوجد مندوبين</tr>
+                  <tr *ngFor="let employee of employees "
+                      >
+                      <td>{{employee.name}}</td>
+                      <td>{{employee.phoneNum}}</td>
+                      <td>{{employee.area}}</td>
+                      <td>
+                          <button class="btn btn-info" 
+                          [routerLink]="['/employeedetails', employee.id]"
+                          (click)="onSelect(employee)">عرض التقرير</button>
+                      </td>
+                      <td>
+                          <button class="btn btn-danger"  
+                          (click)="onDelete(employee.id)">DELETE</button>
+                          <button class="btn btn-primary" 
+                          [routerLink]="['/editEmployee', employee.id]">EDIT</button>
+                          <button class="btn btn-primary" 
+                          [routerLink]="['/employeeProduct', employee.id]">Products</button>
+                          <button class="btn btn-primary" 
+                          [routerLink]="['/rate', employee.id]">rate</button>
+                          <button class="btn btn-primary" 
+                          [routerLink]="['/road', employee.id]">road map</button>
+                
+                         
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="print text-center">
+              <a style="color: #fff !important;" class="print-btn btn btn-primary"
+              title="print button" onclick="window.print();" target="_blank">
+                   طباعة 
+                </a>
+          </div>
+  </div>
+</section>

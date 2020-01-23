@@ -52,6 +52,7 @@ import { EmployeeProductComponent } from './employee-product/employee-product.co
 import { TargetComponent } from './target/target.component';
 import { AddtargetComponent } from './addtarget/addtarget.component';
 import { RoadMapComponent } from './road-map/road-map.component';
+import { EmployeeofmoderatorsComponent } from './employeeofmoderators/employeeofmoderators.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { RoadMapComponent } from './road-map/road-map.component';
     EmployeeProductComponent,
     TargetComponent,
     AddtargetComponent,
-    RoadMapComponent
+    RoadMapComponent,
+    EmployeeofmoderatorsComponent
   ],
   imports: [
       BrowserModule,

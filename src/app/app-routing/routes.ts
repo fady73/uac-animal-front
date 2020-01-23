@@ -25,6 +25,7 @@ import { EmployeeProductComponent } from '../employee-product/employee-product.c
 import { TargetComponent } from '../target/target.component';
 import { AddtargetComponent } from '../addtarget/addtarget.component';
 import { RoadMapComponent } from '../road-map/road-map.component';
+import { EmployeeofmoderatorsComponent } from '../employeeofmoderators/employeeofmoderators.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -43,6 +44,7 @@ export const routes: Routes = [
     { path: 'clientdetails/:id', component: ClientDetailsComponent, canActivate: [AuthGuard] },
     { path: 'employeedetails/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
     { path: 'employeeProduct/:id', component: EmployeeProductComponent, canActivate: [AuthGuard]},
+    { path: 'employeeofmoderator/:id', component: EmployeeofmoderatorsComponent, canActivate: [AuthGuard]},
     { path: 'rate/:id', component: EmployeeRateComponent, canActivate: [AuthGuard]},
     { path: 'products', component: ProductsComponent, canActivate: [AuthGuard]},
     { path: 'target', component: TargetComponent, canActivate: [AuthGuard] },
