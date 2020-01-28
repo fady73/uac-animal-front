@@ -6,13 +6,14 @@ export class Target {
 
     target:number;
     
-date:string
+date_from:string
+date_to:string
 
 employee_id:number
 
 product_id:number
-employees:EmployeeModel=new EmployeeModel();
-product:ProductModel=new ProductModel()
-employee_name:string
+// employees:EmployeeModel=new EmployeeModel();
+// product:ProductModel=new ProductModel()
+// employee_name:string
 
 }

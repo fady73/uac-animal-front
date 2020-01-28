@@ -5,9 +5,12 @@
           <p class="text-right col-sm-3 col-6">التارجت </p>
           <input type="number" class="form-control col-sm-3 col-6"
                  [(ngModel)]="Target" />
-          <label for="date" class="col-sm-1 col-3">التاريخ</label>
+          <label for="date" class="col-sm-1 col-3">التاريخ من </label>
           <input type="date" class="form-control col-sm-2 col-3" 
-          [(ngModel)]="date" />
+          [(ngModel)]="datefrom" />
+          <label for="date" class="col-sm-1 col-3">التاريخ الي</label>
+          <input type="date" class="form-control col-sm-2 col-3" 
+          [(ngModel)]="dateto" />
          
       </div>
       <br>

@@ -15,7 +15,8 @@ export class AddtargetComponent implements OnInit {
 employees:any;
 products:any
 target:Target=new Target()
-date:string
+datefrom:string
+dateto:string
 employee:number
 product:number
 Target:number
@@ -49,16 +50,18 @@ Target:number
 
   submit()
   {
-    this.target.date=this.date
+    this.target.date_from=this.datefrom
+    this.target.date_to=this.dateto
     this.target.employee_id=this.employee
     this.target.product_id=this.product
     this.target.target=this.Target
+    console.log(this.target)
     this.targetService.addtarget(this.target).subscribe(
       data => {
           console.log(data);
           if (data["status"]=="success") {
               alert('تم اضافة تارجت جديد الى قاعدة البيانات');
-            this.router.navigate(['/target']);
+            this.router.navigate(['/employees']);
                 
               }
           else {
