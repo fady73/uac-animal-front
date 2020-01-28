@@ -15,6 +15,10 @@ export class TargetService {
     return this.http.get('http://laravel.uac-animal.com/api/targets');
 }
 
+showtargetbyid(id:string): Observable<object> {
+  return this.http.get(`http://laravel.uac-animal.com/api/target/mandob?employee_id=${id}`);
+}
+
 addtarget(target:Target): Observable<object>
 {
   return this.http.post('http://laravel.uac-animal.com/api/targets',target);

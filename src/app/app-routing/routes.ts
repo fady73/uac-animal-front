@@ -47,7 +47,8 @@ export const routes: Routes = [
     { path: 'employeeofmoderator/:id', component: EmployeeofmoderatorsComponent, canActivate: [AuthGuard]},
     { path: 'rate/:id', component: EmployeeRateComponent, canActivate: [AuthGuard]},
     { path: 'products', component: ProductsComponent, canActivate: [AuthGuard]},
-    { path: 'target', component: TargetComponent, canActivate: [AuthGuard] },
+    { path: 'target/:id', component: TargetComponent, canActivate: [AuthGuard] },
+
     { path: 'addTarget', component: AddtargetComponent, canActivate: [AuthGuard] },
     { path: 'road/:id', component: RoadMapComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },

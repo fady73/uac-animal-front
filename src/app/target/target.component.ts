@@ -3,6 +3,7 @@ import { Target } from '../shared/target';
 import { TargetService } from '../services/target.service';
 import { EmployeeService } from '../services/employee.service';
 import { ProductsService } from '../services/products.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-target',
@@ -15,28 +16,34 @@ export class TargetComponent implements OnInit {
   item:Target=new Target()
  result:any[]
     filterText = '';
-
-    constructor(private targetService: TargetService , private employee:EmployeeService , private product:ProductsService) { }
+id:string
+    constructor(private targetService: TargetService , private employee:EmployeeService , private product:ProductsService , private route: ActivatedRoute) { }
     ngOnInit() {
         // this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
-        this.targetService.showtarget().subscribe(
+
+        this.route.paramMap.subscribe(params => {
+          this.id = params.get('id');
+          this.targetService.showtargetbyid(this.id).subscribe(
           
-          target =>{
-            console.log(target["data"])
-            this.target = target["data"]
-           this.target.forEach(element => {
-             this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
-             {
-                     console.log(response[0].name)
-                     element.employee_name=response[0].name
+            target =>{
+              console.log(target["data"])
+              this.target = target["data"]
+             this.target.forEach(element => {
+               this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
+               {
+                       console.log(response[0].name)
+                       element.employee_name=response[0].name
+               });
+  
+  
              });
-
-
-           });
-           
-          }
-          
-          );
+             
+            }
+            
+            );
+       
+        });
+   
 
 
   }

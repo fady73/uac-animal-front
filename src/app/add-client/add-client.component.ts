@@ -81,7 +81,9 @@ export class AddClientComponent implements OnInit {
       fattingPhase: '',
       talaak: 0,
       talaakNum: 0,
-      tNumber: 0
+      tNumber: 0,
+      owner:'',
+      mondator:''
     });
   }
 

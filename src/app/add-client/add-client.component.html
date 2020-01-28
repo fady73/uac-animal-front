@@ -40,6 +40,24 @@
              </div>
          </div>
 
+             <!--new Input-->
+             <div class="form-group">
+                <label class="col-md-2 text-right" for="mondator"> المشرف : </label>
+                <div class="col-md-10">
+                    <input type="text" formControlName="mondator" class="form-control" >
+                 </div>
+            </div>
+
+                <!--new Input-->
+                <div class="form-group">
+                    <label class="col-md-2 text-right" for="owner">صاحب المزرعة  : </label>
+                    <div class="col-md-10">
+                        <input type="text" formControlName="owner" class="form-control" >
+                     </div>
+                </div>
+        
+    
+
          <div class="form-group">
             <label class="col-md-2 text-right" for="Number">عدد الحيوانات:</label>
             <div class="col-md-10">
@@ -74,8 +92,13 @@
              class="form-control col-md-10">
                 <option value="0">حلاب </option>
                 <option value="1">تسمين</option>
+                <option value="2">بياض</option>
+                <option value="3">أمهات</option>
             </select>        
           </div>
+
+          
+
 
           <!-- if production milk  -->
           <div class="form-group" *ngIf="productionType==0"> 
