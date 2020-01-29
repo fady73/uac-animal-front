@@ -3,7 +3,7 @@ import { EmployeeService } from '../services/employee.service';
 import { ProductsService } from '../services/products.service';
 import { TargetService } from '../services/target.service';
 import { Target } from '../shared/target';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,13 +15,19 @@ export class AddtargetComponent implements OnInit {
 employees:any;
 products:any
 target:Target=new Target()
-date:string
+datefrom:string
+dateto:string
 employee:number
 product:number
 Target:number
-  constructor(private employeeService: EmployeeService , private productService: ProductsService , private targetService: TargetService,  private router: Router) { }
+id:number
+  constructor(private employeeService: EmployeeService , private route:ActivatedRoute , private productService: ProductsService , private targetService: TargetService,  private router: Router) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.id = parseInt( params.get('id'));
+   
+    });
     this.allEmployees();
     this.allproduct();
   }
@@ -49,16 +55,18 @@ Target:number
 
   submit()
   {
-    this.target.date=this.date
-    this.target.employee_id=this.employee
+    this.target.date_from=this.datefrom
+    this.target.date_to=this.dateto
+    this.target.employee_id=this.id
     this.target.product_id=this.product
     this.target.target=this.Target
+    console.log(this.target)
     this.targetService.addtarget(this.target).subscribe(
       data => {
           console.log(data);
           if (data["status"]=="success") {
               alert('تم اضافة تارجت جديد الى قاعدة البيانات');
-            this.router.navigate(['/target']);
+            this.router.navigate([`/target/${this.id}`]);
                 
               }
           else {

@@ -85,15 +85,24 @@
                 <input type="text" formControlName="weight" class="form-control" placeholder="من:الى">
              </div>
         </div>
-
+        <div class="form-group">
+            <label class="col-md-2 text-right" for="production">نوع المزرعة:</label>
+            <select formControlName="production" (ngModelChange)="onSelecttype($event)"
+             class="form-control col-md-10">
+                <option value="0">دواجن </option>
+                <option value="1">مواشي</option>
+              
+            </select>        
+          </div>
           <div class="form-group">
             <label class="col-md-2 text-right" for="production">انتاجية المزرعة:</label>
             <select formControlName="production" (ngModelChange)="onSelectProduction($event)"
              class="form-control col-md-10">
-                <option value="0">حلاب </option>
+             <option *ngFor="let item of type " [value]="item.id">{{item.name}}</option>
+                <!-- <option value="0">حلاب </option>
                 <option value="1">تسمين</option>
                 <option value="2">بياض</option>
-                <option value="3">أمهات</option>
+                <option value="3">أمهات</option> -->
             </select>        
           </div>
 

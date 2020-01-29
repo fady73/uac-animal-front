@@ -34,8 +34,9 @@
                       <th>اسم الموظف</th>
                       <th>اسم المنتج</th>
                       <th>Target </th>
-                      <th>التاريخ</th>
-                  
+                      <th> sell_product </th>
+                      <th>من التاريخ </th>
+                      <th>الي التاريخ </th>
                   </tr>
               </thead>
               <tbody>
@@ -47,8 +48,9 @@
                       <td *ngIf="item.product_name!=null">{{item.product_name}}</td>
                       <td *ngIf="item.product_name==null">لا يوجد منتج</td>
                       <td>{{item.target}}</td>
+                      <td>{{item.sell_product}}</td>
                       <td>{{item.date_from}}</td>
-                     
+                      <td>{{item.date_to}}</td>
                   </tr> 
               </tbody>
           </table>

@@ -11,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./target.component.scss']
 })
 export class TargetComponent implements OnInit {
-  start:string
-  end:string
+start:string
+end:string
   target: any[]=[];
   item:Target=new Target()
  result:any[]
@@ -28,8 +28,9 @@ id:string
           this.targetService.showtargetbyid(this.id).subscribe(
           
             target =>{
-              console.log(target["data"])
+           
               this.target = target["data"]
+              console.log(this.target)
             //  this.target.forEach(element => {
             //    this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
             //    {
@@ -50,27 +51,27 @@ id:string
 
   }
 
-  
   submit()
-  {
- console.log("kjkj")
-    this.targetService.showtargetbydate(this.id,this.start,this.end).subscribe(
-      response => {
-          console.log(response);
-         
-          this.target=response["data"]
-          // this.target.forEach(element => {
-          //   this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
-          //   {
-          //           console.log(response[0].name)
-          //           element.employee_name=response[0].name
-          //   });
+{
+  this.targetService.showtargetbydate(this.id,this.start,this.end).subscribe(
+          
+    target =>{
+   
+      this.target = target["data"]
+      console.log(this.target)
+    //  this.target.forEach(element => {
+    //    this.employee.getEmployee(element.employee_id.toString()).subscribe( response=>
+    //    {
+    //            console.log(response[0].name)
+    //            element.employee_name=response[0].name
+    //    });
 
 
-          // });
-      },
-      (error) => console.log(error)
-  );
+    //  });
+     
+    }
+    
+    );
   }
  
 

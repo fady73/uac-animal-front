@@ -22,6 +22,8 @@ showtargetbyid(id:string): Observable<object> {
 showtargetbydate(id:string,fdate:string,tdate:string): Observable<object> {
   return this.http.get(`http://laravel.uac-animal.com/api/target/mandob?employee_id=${id}&dateFrom=${fdate}&dateTo=${tdate}`);
 }
+
+
 addtarget(target:Target): Observable<object>
 {
   return this.http.post('http://laravel.uac-animal.com/api/targets',target);

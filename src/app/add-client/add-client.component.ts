@@ -21,6 +21,7 @@ export class AddClientComponent implements OnInit {
   factoryForm: FormGroup;
   showRoomForm: FormGroup;
   doctorForm: FormGroup;
+  type:any[]=[]
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -56,6 +57,18 @@ export class AddClientComponent implements OnInit {
     this.productionType = val;
     console.log(this.productionType);
   }
+
+  onSelecttype(val: any) {
+  if(val==0)
+  {
+    this.type= [{'name': 'بياض','id':'2'}, {'name': 'تسمين','id':'1'}, {'name': 'أمهات','id':'3'}];
+  }
+  else
+  {
+    this.type=[{'name': 'حلايب','id':'0'}, {'name': 'تسمين','id':'1'}];
+  }
+  }
+
 
   onSelectTalaak(val: any) {
     this.talaak = val;
