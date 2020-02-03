@@ -42,8 +42,8 @@
                 <tbody>
                     <tr *ngFor="let visit of visits " >
                     
-                        <td style="text-align: center;" *ngIf="visit.companies !=null">{{visit.companies.name}}</td>
-                        <td style="text-align: center;" *ngIf="visit.companies ==null">لا يوجد اسم</td>
+                        <td style="text-align: center;" *ngIf="visit.company !=null">{{visit.company.name}}</td>
+                        <td style="text-align: center;" *ngIf="visit.company ==null">لا يوجد اسم</td>
                         <td style="text-align: center;">{{visit.date}}</td>
                        <td style="text-align: center;">تم </td>
                         
@@ -51,8 +51,8 @@
 
                     <tr *ngFor="let novisits of novisit " >
                        
-                        <td style="text-align: center;" *ngIf="novisits.companies !=null">{{novisits.companies.name}}</td>
-                        <td style="text-align: center;" *ngIf="novisits.companies ==null">لا يوجد اسم</td>
+                        <td style="text-align: center;" *ngIf="novisits.company !=null">{{novisits.company.name}}</td>
+                        <td style="text-align: center;" *ngIf="novisits.company ==null">لا يوجد اسم</td>
                 
                       <td style="text-align: center;">{{novisits.date}}</td>
                      <td style="text-align: center;">لم يتم</td>
