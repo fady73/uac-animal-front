@@ -61,6 +61,11 @@ showproduct(id:string , datefrom:string,dateto:string):Observable<object>
 {
 return this.http.get(`http://laravel.uac-animal.com/api/product/employee/${id}?dateFrom=${datefrom}&dateTo=${dateto}`);
 }
+showproductofemployee(id:string):Observable<object>
+{
+return this.http.get(`http://laravel.uac-animal.com/api/product/employee/${id}`);
+}
+
 
 addrate(rate:Rate):Observable<object>
 {

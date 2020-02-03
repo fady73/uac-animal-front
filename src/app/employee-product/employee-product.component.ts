@@ -11,7 +11,7 @@ import { ProductModel } from '../shared/product-model';
 export class EmployeeProductComponent implements OnInit {
 
   id:string
-  products: any[];
+  products: any[]=[];
   product:ProductModel[]
   flag=false;
   constructor(private productService: EmployeeService  , private route: ActivatedRoute , private router: Router) {}
@@ -20,7 +20,7 @@ export class EmployeeProductComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-    this.productService.showproduct(this.id,"2000-12-01","2020-01-05").subscribe(
+    this.productService.showproductofemployee(this.id).subscribe(
       products => 
 
       {
@@ -29,6 +29,7 @@ export class EmployeeProductComponent implements OnInit {
         {
          
           this.products=products["data"]
+          console.log(this.products)
         }
         else
         {

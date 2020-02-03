@@ -4164,6 +4164,7 @@ var EmployeeProductComponent = /** @class */ (function () {
         this.productService = productService;
         this.route = route;
         this.router = router;
+        this.products = [];
         this.flag = false;
     }
     EmployeeProductComponent.prototype.ngOnInit = function () {
@@ -4171,10 +4172,11 @@ var EmployeeProductComponent = /** @class */ (function () {
         this.route.paramMap.subscribe(function (params) {
             _this.id = params.get('id');
         });
-        this.productService.showproduct(this.id, "2000-12-01", "2020-01-05").subscribe(function (products) {
+        this.productService.showproductofemployee(this.id).subscribe(function (products) {
             console.log(products);
             if (products["data"].length != 0) {
                 _this.products = products["data"];
+                console.log(_this.products);
             }
             else {
                 _this.flag = true;
@@ -5850,6 +5852,9 @@ var EmployeeService = /** @class */ (function () {
     };
     EmployeeService.prototype.showproduct = function (id, datefrom, dateto) {
         return this.http.get("http://laravel.uac-animal.com/api/product/employee/" + id + "?dateFrom=" + datefrom + "&dateTo=" + dateto);
+    };
+    EmployeeService.prototype.showproductofemployee = function (id) {
+        return this.http.get("http://laravel.uac-animal.com/api/product/employee/" + id);
     };
     EmployeeService.prototype.addrate = function (rate) {
         return this.http.post('http://laravel.uac-animal.com/api/add/rate/employee', rate);
